@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Web - Alvaro Fachin Vargas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --rojo-targaryen: #7a0000;
+            --rojo-brillante: #b30000;
+            --dorado-dragon: #d4af37;
+            --fondo-oscuro: #0a0a0a;
+            --texto-claro: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #2a0000 0%, var(--fondo-oscuro) 50%, #000000 100%);
+            color: var(--texto-claro);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .cv-contenedor {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 
+                        inset 0 0 20px rgba(122, 0, 0, 0.3);
+            max-width: 1000px;
+            width: 100%;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-contenedor::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--rojo-targaryen);
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            margin-bottom: 10px;
+        }
+
+        h2.rango {
+            color: var(--dorado-dragon);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .contacto-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pildora {
+            background: linear-gradient(135deg, rgba(122, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pildora:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+            border-color: var(--dorado-dragon);
+        }
+
+        .pildora i {
+            color: var(--dorado-dragon);
+            font-size: 1.1rem;
+        }
+
+        .cv-cuerpo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .cv-cuerpo {
+                grid-template-columns: 1fr; 
+            }
+            h1 { font-size: 2.5rem; }
+            .cv-contenedor { padding: 30px; }
+        }
+
+        .seccion {
+            margin-bottom: 35px;
+        }
+
+        .seccion h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--dorado-dragon);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seccion h3::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--rojo-targaryen), transparent);
+        }
+
+        .seccion p {
+            line-height: 1.8;
+            font-size: 0.95rem;
+            color: #cccccc;
+            text-align: justify;
+        }
+
+        .item-lista {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--rojo-targaryen);
+            transition: background 0.3s ease;
+        }
+
+        .item-lista:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-left-color: var(--dorado-dragon);
+        }
+
+        .item-lista h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .item-lista span.lugar {
+            display: block;
+            color: var(--dorado-dragon);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .habilidad {
+            margin-bottom: 20px;
+        }
+
+        .habilidad-texto {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .barra-fondo {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .barra-progreso {
+            height: 100%;
+            background: linear-gradient(90deg, var(--rojo-targaryen), var(--dorado-dragon));
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .barra-progreso::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            border-radius: 10px;
+        }
+
+        @media print {
+            body { background: #111; color: #fff; }
+            .cv-contenedor { box-shadow: none; border: 1px solid #333; margin: 0; padding: 20px; }
+            .barra-progreso { background: var(--rojo-targaryen) !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-contenedor">
+        <header>
+            <h1>Alvaro Fachin Vargas</h1>
+            <h2 class="rango">Desarrollador Web Front-End</h2>
+            
+            <div class="contacto-grid">
+                <div class="pildora"><i class="fas fa-map-marker-alt"></i> Jesús María, Lima</div>
+                <div class="pildora"><i class="fas fa-phone"></i> 964 112 327</div>
+                <div class="pildora"><i class="fas fa-envelope"></i> vargasover1412@gmail.com</div>
+            </div>
+        </header>
+
+        <div class="cv-cuerpo">
+            <div class="columna">
+                <div class="seccion">
+                    <h3><i class="fas fa-dragon"></i> Perfil</h3>
+                    <p>Desarrollador web con una pasión inquebrantable por crear interfaces épicas. Especializado en estructurar ideas con código limpio, darles vida mediante estilos avanzados y dotarlas de interacción fluida. Listo para superar expectativas y dejar huella en la red con proyectos que combinan diseño y funcionalidad.</p>
+                </div>
+
+                <div class="seccion">
+                    <h3><i class="fas fa-scroll"></i> Formación</h3>
+                    <div class="item-lista">
+                        <h4>Desarrollo de Sistemas de Información</h4>
+                        <span class="lugar">Instituto IDAT | En curso</span>
+                        <p style="font-size: 0.85rem; margin: 0;">Enfocado en la creación de tecnologías web, arquitectura de software y diseño de experiencias digitales de alto impacto.</p>
+                    </div>
+                </div>
+
+                <div class="seccion">
+                    <h3><i class="fas fa-globe"></i> Idiomas</h3>
+                    <div class="item-lista">
+                        <h4>Español</h4>
+                        <span class="lugar">Nativo</span>
+                    </div>
+                    <div class="item-lista">
+                        <h4>Inglés Técnico</h4>
+                        <span class="lugar">Lectura y Comprensión de Documentación</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columna">
+                <div class="seccion">
+                    <h3><i class="fas fa-code"></i> Habilidades Técnicas</h3>
+                    
+                    <div class="habilidad">
+                        <div class="habilidad-texto">
+                            <span>HTML5 (Estructura y Semántica)</span>
+                        </div>
+                        <div class="barra-fondo">
+                            <div class="barra-progreso" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="habilidad">
+                        <div class="habilidad-texto">
+                            <span>CSS3 (Flexbox, Grid & Animaciones)</span>
+                        </div>
+                        <div class="barra-fondo">
+                            <div class="barra-progreso" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="habilidad">
+                        <div class="habilidad-texto">
+                            <span>JavaScript (Interactividad & DOM)</span>
+                        </div>
+                        <div class="barra-fondo">
+                            <div class="barra-progreso" style="width: 75%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="habilidad">
+                        <div class="habilidad-texto">
+                            <span>Diseño UI/UX Responsivo</span>
+                        </div>
+                        <div class="barra-fondo">
+                            <div class="barra-progreso" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seccion">
+                    <h3><i class="fas fa-laptop-code"></i> Proyectos</h3>
+                    <div class="item-lista">
+                        <h4>Portafolio Personal Interactivo</h4>
+                        <span class="lugar">HTML5 | CSS3 Puro</span>
+                        <p style="font-size: 0.85rem; margin: 0;">Diseño y desarrollo de un portafolio web ("One-Page"). Implementación de navegación suave, diseño responsivo y temática visual personalizada inspirada en alta fantasía utilizando variables CSS y maquetación avanzada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
